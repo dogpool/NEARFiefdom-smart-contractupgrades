@@ -36,9 +36,10 @@ async function main() {
   // TODO @dogpool
   // 4. Deploy and initialize upgradable contract ResourceGenerator.
   const ResourceGenerator = await ethers.getContractFactory("ResourceGenerator");
-  // TODO: @dogpool check if [42] is the right value. I don't know what that means.
+  // TODO: @dogpool check if [42] is the right value. I don't know what that means. yes
   const rssgen = await upgrades.deployProxy(ResourceGenerator, [42]); 
-
+  await rssgen.deployed();
+  console.log("ResourceGenerator deployed to:", rssgen.address);
 
 
   // 5. Give the ResourceGenerator mint powers for resources & tiles.
