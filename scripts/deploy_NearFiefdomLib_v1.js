@@ -37,7 +37,9 @@ async function main() {
   // 4. Deploy and initialize upgradable contract ResourceGenerator.
   const ResourceGenerator = await ethers.getContractFactory("ResourceGenerator");
   // TODO: @dogpool check if [42] is the right value. I don't know what that means. yes
-  const rssgen = await upgrades.deployProxy(ResourceGenerator, [42]); 
+  const rssgen = await upgrades.deployProxy(ResourceGenerator, [nft.address, rss.address]
+  //  {deployer, initializer: 'rssgen'}
+  ); 
   await rssgen.deployed();
   console.log("ResourceGenerator deployed to:", rssgen.address);
 
